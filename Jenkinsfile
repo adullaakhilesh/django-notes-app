@@ -1,6 +1,6 @@
 @Library('Shared')_
 pipeline{
-    agent { label 'dev-server'}
+    agent { label 'ram'}
     
     stages{
         stage("Code clone"){
@@ -11,12 +11,12 @@ pipeline{
         }
         stage("Code Build"){
             steps{
-            docker_build("notes-app","latest")
+            docker_build("notes-app","latest","akhilesh3369")
             }
         }
         stage("Push to DockerHub"){
             steps{
-                docker_push("dockerHubCred","notes-app","latest")
+                docker_push("notes-app","latest","akhilesh3369")
             }
         }
         stage("Deploy"){
